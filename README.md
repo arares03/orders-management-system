@@ -1,7 +1,7 @@
 # Warehouse Client Order Management System
 
 ## Description
-This is a Warehouse Client Order Management application that allows employees to manage client orders in a warehouse. The system provides CRUD (Create, Read, Update, Delete) operations for clients, products, and orders. Employees can create new orders by selecting clients and products, check stock availability, and generate bills after placing orders.
+This is a Warehouse Client Order Management application that allows employees to manage client orders in a warehouse. The system provides CRUD (Create, Read, Update, Delete) operations for clients, products, and orders. Employees can create new orders by selecting clients and products, check stock availability, and generate bills after placing orders. In this project, reflection is employed to dynamically handle CRUD operations on database entities.
 ![PT_ASSIGN3_CRUD_REFLECTION](https://github.com/user-attachments/assets/123f728c-5907-496d-aa5c-4252482453db)
 ## Features
 - **Client Management**: Add, edit, delete, and view clients.
@@ -10,7 +10,6 @@ This is a Warehouse Client Order Management application that allows employees to
 - **Bill Generation**: Automatically generate bills after successful orders.
 - **User-Friendly Interface**: Simple, intuitive UI for performing warehouse operations.
 - **Error Handling**: Clear error messages for invalid inputs like negative stock or invalid email addresses.
-
 
 ## Problem Analysis, Modeling, Scenarios, Use Cases
 
@@ -119,6 +118,40 @@ This is a Warehouse Client Order Management application that allows employees to
 6. The employee clicks the “Create Order” button to confirm.
 **Alternative Sequence**: Invalid product quantity:
 - If the user enters a negative value, decimal, or exceeds the available stock, the application displays an error message and requests a valid quantity.
+
+- ### Implementation
+
+The implementation of the warehouse management application was carried out in several phases, with each feature being developed in alignment with the functional and non-functional requirements.
+
+#### Client Management
+
+- **Add Client**: The employee can add a new client by entering the client's name and email address. Validation is performed to ensure that the email format is correct.
+- **Edit Client**: Employees can edit the details of existing clients. The system ensures that invalid email addresses are not accepted.
+- **Delete Client**: Employees can delete a client by specifying the client’s ID. The application will confirm the deletion before proceeding.
+- **Get Clients**: All clients can be viewed in a table format with their details.
+
+####  Product Management
+
+- **Add Product**: Employees can add a product by specifying the product name, price, and stock quantity. The system ensures that the stock quantity is non-negative.
+- **Edit Product**: Employees can modify the details of an existing product, including price and stock quantity. Validation ensures stock is never negative.
+- **Delete Product**: Employees can delete a product by specifying its ID. The system will confirm the action before deletion.
+- **Get Products**: Employees can view all products in the system, displaying details such as name, price, and stock.
+
+####  Order Management
+
+- **Create Order**: Employees can create a new order by selecting a client and then selecting the products and quantities for the order. If the selected quantity exceeds the available stock, a warning is displayed. Once the order is created, the stock is decremented, and the order details are saved.
+- **Generate Bill**: After each successful order, a bill is generated automatically based on the selected products and their quantities.
+
+#### Error Handling
+
+Throughout the application, proper error messages are displayed for invalid inputs, such as:
+- Invalid stock or price values for products.
+- Invalid email format for clients.
+- Invalid quantity inputs during order creation (e.g., negative or decimal values).
+- Product stock shortages are also properly handled during order creation, ensuring a smooth user experience.
+
+---
+
 
 ## Conclusion
 This Warehouse Client Order Management System effectively streamlines the process of managing client orders, inventory, and bill generation. The system offers intuitive functionalities and robust error handling, making it easy for employees to manage warehouse operations efficiently.
